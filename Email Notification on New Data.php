@@ -14,11 +14,12 @@ if (!defined('ABSPATH')) {
 }
 
 // Create the admin menu items
-add_action('admin_menu', 'email_notification_on_new_data_menu');
-function email_notification_on_new_data_menu() {
-    add_options_page('Email Notification on New Data', 'Email Notification on New Data', 'manage_options', 'email-notification-on-new-data', 'email_notification_on_new_data_settings_page');
-    add_submenu_page('email-notification-on-new-data', 'Select Data', 'Select Data', 'manage_options', 'email-notification-on-new-data-data', 'email_notification_on_new_data_data_page');
+add_action('init', 'notifier_init');
+
+function notifier_init() {
+  add_action('wp_insert_post', 'notifier_send_email');
 }
+
 
 // Render the settings page
 function email_notification_on_new_data_settings_page() {
