@@ -64,17 +64,17 @@ function email_notification_on_new_data_settings_page() {
                 </td>
             </tr>
         </table>
-        <p class=“submit”> <input type=“submit” class=“button-primary” value=“Save Changes” /> </p>
+        <p class="submit"> <input type="submit" class="button-primary" value="Save Changes" /> </p>
     </form>
-</div>
-<?php
+</div> <?php
 }
 
-// Render the data selection page function email_notification_on_new_data_data_page() { global $wpdb; $table = get_option(‘email_notification_on_new_data_table’); if (empty($table)) { echo ‘<div class=“notice notice-warning is-dismissible”><p>Please select a database table in the plugin settings.</p></div>’; return; } $results = $wpdb->get_results(“SELECT * FROM $table”, ARRAY_A); $columns = array_keys($results[0]); ?>
-<div class=“wrap”>
+// Render the data selection page function email_notification_on_new_data_data_page() { global $wpdb; $table = get_option(‘email_notification_on_new_data_table’); if (empty($table)) { echo ‘<div class="notice notice-warning is-dismissible"><p>Please select a database table in the plugin settings.</p></div>
+; return;  $results = $wpdb->get_results(“SELECT * FROM $table”, ARRAY_A); $columns = array_keys($results[0]); ?> <div
+    class=“wrap”>
     <h1>Select Data</h1>
-    <form method=“post” action=“<?php echo esc_url(admin_url(‘admin-post.php’)); ?>”> <input type=“hidden” name=“action”
-            value=“email_notification_on_new_data_update_data”>
+    <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+        <input type=“hidden” name=“action” value=“email_notification_on_new_data_update_data”>
         <?php wp_nonce_field(‘email_notification_on_new_data_update_data’, ‘email_notification_on_new_data_nonce’); ?>
         <table class=“widefat striped”>
             <thead>
